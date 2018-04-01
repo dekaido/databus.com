@@ -5,75 +5,59 @@
 
 <body>
 <h1> <I> Create a Space  </I> </h1>
- <form action="/spaces_page.php" method >
+ <form action="/spaces_page.php" method = post >
   Space Name: <input type= "text" name="space_name"><br>
 <!-- Space Name -->
-</form>
 
-<form>
   Street Address:
   <input type= "text" name="street"><br>
 <!-- Street Address -->
-</form>
 
-<form>
   Apartment Number:
   <input type= "text" name="apt"><br>
 <!-- Apartment Number: -->
-</form>
 
-<form>
   State:
   <input type= "text" name="state"><br>
 <!-- State -->
-</form>
 
-<form>
   Zip Code:
-  <input type= "number" name="zipcode"><br>
+  <input type= "number" name="zipcode" pattern "[0-9]{5}"><br>
 <!-- Zip Code -->
-</form>
 
-<form>
   Availability <br>
   From:
   <input type= "datetime-local" name="from"><br>
   Till:
   <input type= "datetime-local" name="till"><br>
 <!-- Availability -->
-</form>
-<form>
-<p> Categories </p>
+
+ Categories
 <select name= "Categories">
   <option value= "SmallBusinessRoom">Small Business Room For 50 people</option>
   <option value= "BigBusinessRoom">Big Business Room For 200 people</option>
 <!-- Categories -->
 </select>
-</form>
-<form>
+
   Price Per Hour:
   <input type= "number" name="price"><br>
 <!-- Price -->
-</form>
 
-<form>
   Small Description:
   <input type= "text" name="description"><br>
 <!-- Small Description -->
-</form>
 
-<form action="/space_page.php">
+  Amenities
   <input type="checkbox" name="amenities" value= "High Speed Internet">HighSpeedInternet<br>
   <input type="checkbox" name="Amenities" value="Projector and Screen">ProjectorandScreen<br>
 <!-- Amenities -->
-</form>
 
-<form action="/action_page.php">
+  Pictures
   <input type="file" name="pic" accept="image/*"> <br>
   <br>
   <input type="submit">
-</form>
 <!-- Images -->
+
 </form>
 
 </body>
