@@ -1,20 +1,24 @@
+<?php
 <html>
 <body>
-<?php
+
 
 // Connect to server-database
-	DEFINE('DB_USERNAME', 'root');
+	/*DEFINE('DB_USERNAME', 'root');
 	DEFINE('DB_PASSWORD', 'root');
 	DEFINE('DB_HOST', 'localhost');
-	DEFINE('DB_DATABASE', 'databus_schema');
-/*
-	$server = "localhost";
-	$username = "root";
-	$password = "";
-	$database = "";
-*/
+	DEFINE('DB_DATABASE', 'databus_schema');*/
 
-$connect = mysqli_connect($server,$username,$password,$database);
+$server = "localhost";
+
+$username = "root";
+$password = "";
+$database = "database_phase3";
+
+$connect = mysqli_connect($server, $username, $password, $database);
+
+
+//$connect = mysqli_connect($server,$username,$password,$database);
 
 if(mysqli_connect_error())
 {
@@ -39,7 +43,7 @@ $res1 = mysqli_query($connect,$cmd1);
 
 if(mysqli_num_rows($res1) > 0)
 {
-	$emailErr = "Cannot create account with existing email address."
+	$emailErr = "Cannot create account with existing email address.";
 }
 
 // Add new registered user to database
