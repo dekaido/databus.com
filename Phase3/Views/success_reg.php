@@ -2,6 +2,26 @@
 <body>
 <?php
 
+// Connect to server-database
+	DEFINE('DB_USERNAME', 'root');
+	DEFINE('DB_PASSWORD', 'root');
+	DEFINE('DB_HOST', 'localhost');
+	DEFINE('DB_DATABASE', 'databus_schema');
+/*
+	$server = "localhost";
+	$username = "root";
+	$password = "";
+	$database = "";
+*/
+
+$connect = mysqli_connect($server,$username,$password,$database);
+
+if(mysqli_connect_error())
+{
+	die("Connection failed: " . mysqli_connect_error());	
+}
+
+
 // Temp save all user input to php,hash password
 $firstname = trim($_POST["firstname"]);
 $lastname = trim($_POST["lastname"]);
@@ -10,18 +30,6 @@ $password = password_hash(trim($_POST["password"]),PASSWORD_BCRYPT,$options);
 $phone = $_POST["phoneno"];
 $usertype = $_POST["usertype"].value;
 
-// Connect to server-database
-$server = "localhost";
-$username = "root";
-$password = "";
-$database = "";
-
-$connect = mysqli_connect($server,$username,$password,$database);
-
-if(mysqli_connect_error())
-{
-	die("Connection failed: " . mysqli_connect_error());	
-}
 
 // SQL commands to send to server
 
