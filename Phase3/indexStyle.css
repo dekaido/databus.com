@@ -27,18 +27,27 @@
     color: white;
 }
 
+.topnav a.normal{
+    float: left;
+}
 .topnav a.right{
-    float:right;
+    float: right;
 }
 
 /* Style the search box inside the navigation bar */
-.topnav input[type=text] {
+.topnav input, .topnav form [type=search] {
     float: right;
     padding: 6px;
     border: none;
     margin-top: 8px;
     margin-right: 16px;
     font-size: 17px;
+}
+.img {
+    @extend .container text-center;
+    background-image: url("/indexpic.jpg");
+    height:500px;
+    width: 100%;
 }
 
 

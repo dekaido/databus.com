@@ -15,7 +15,13 @@ if(mysqli_connect_error())
 {
     die("connection failed:" . mysqli_connect_error());
 }
-$sql_insert_user = "INSERT INTO Regular(first_name, last_name, email, password, phone_number) VALUES('$name', '$last', '$email', '$pass', '$phone');";
+
+$max = "SELECT MAX(Regular_id) AS MAXID FROM Regular";
+$max_result = mysqli_query($connect, $max);
+$max_id = mysqli_fetch_assoc($max_result);
+$max_id_increment = $max_id['MAXID'] + 1;
+
+$sql_insert_user = "INSERT INTO Regular(regular_id, first_name, last_name, email, password, phone_number, points) VALUES('$max_id_increment','$name', '$last', '$email', '$pass', '$phone', 0);";
 $dis_result = mysqli_query($connect, $sql_insert_user);
 if(!$dis_result){
     die( "sql failed:" . mysqli_error($connect));
@@ -24,7 +30,28 @@ else {
     $_SESSION['email'] = $email;
     $_SESSION['first_name'] = $name;
     header("refresh:2;//localhost/databus/me.php");
-    echo "Signup Successful! Redirecting<br>";
+    echo "
+<!DOCTYPE html>
+<html lang=\"en\">
+<head>
+    <meta charset=\"UTF-8\">
+    <link rel=\"stylesheet\" type=\"text/css\" href=\"indexStyle.css\">
+    <link rel=\"stylesheet\" href=\"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css\">
+
+    <!-- jQuery library -->
+    <script src=\"https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js\"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src=\"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js\"></script>
+    <title>Sign up</title>
+</head>
+<div class=\"container\" style=\"padding: 30px 50px\">
+  <div class=\"alert alert-success\">
+    
+    <strong>Welcome to Databus.com</strong>  Please wait while we are taking you back.
+  </div>
+</div>
+";
 
 }
 

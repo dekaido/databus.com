@@ -1,34 +1,37 @@
 <?php
+
 session_start();
 $server = "localhost";
 $username = "root";
 $password = "";
 $database = "database_phase3";
 $connect = mysqli_connect($server, $username, $password, $database);
-$email = mysqli_real_escape_string($connect, $_REQUEST['email']);
-$name = mysqli_real_escape_string($connect, $_REQUEST['name']);
-$pass = mysqli_real_escape_string($connect, $_REQUEST['password']);
-$phone = mysqli_real_escape_string($connect, $_REQUEST['phone']);
-$company = mysqli_real_escape_string($connect, $_REQUEST['company']);
-$last = mysqli_real_escape_string($connect, $_REQUEST['last']);
+$street = mysqli_real_escape_string($connect, $_REQUEST['street']);
+$apt = mysqli_real_escape_string($connect, $_REQUEST['apt']);
+$zipcode = mysqli_real_escape_string($connect, $_REQUEST['zipcode']);
+$state = mysqli_real_escape_string($connect, $_REQUEST['state']);
 
 if(mysqli_connect_error())
 {
     die("connection failed:" . mysqli_connect_error());
 }
-$max = "SELECT MAX(Vendor_id) AS MAXID FROM VENDOR";
+
+$max = "SELECT MAX(user_addr_id) AS MAXID FROM user_addr";
 $max_result = mysqli_query($connect, $max);
 $max_id = mysqli_fetch_assoc($max_result);
 $max_id_increment = $max_id['MAXID'] + 1;
 
-$sql_insert_user = "INSERT INTO VENDOR(Vendor_id,first_name, last_name, email, password, phone_number, company) VALUES('$max_id_increment','$name', '$last', '$email', '$pass', '$phone', '$company');";
+$sql_insert_user = "INSERT INTO user_addr(user_addr_id, street, apt, zip_code, state) VALUES('$max_id_increment','$street', '$apt', '$zipcode', '$state');";
 $dis_result = mysqli_query($connect, $sql_insert_user);
+
+$email = $_SESSION["email"];
+$sql_update = "UPDATE regular SET regular_addr_id = '$max_id_increment' WHERE email = '$email'";
+$upda = mysqli_query($connect, $sql_update);
 if(!$dis_result){
     die( "sql failed:" . mysqli_error($connect));
 }
 else {
-    $_SESSION['email'] = $email;
-    $_SESSION['first_name'] = $name;
+
     header("refresh:2;//localhost/databus/me.php");
     echo "
 <!DOCTYPE html>
@@ -43,12 +46,12 @@ else {
 
     <!-- Latest compiled JavaScript -->
     <script src=\"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js\"></script>
-    <title>Sign up</title>
+    <title>Address Added</title>
 </head>
 <div class=\"container\" style=\"padding: 30px 50px\">
   <div class=\"alert alert-success\">
     
-    <strong>Welcome to Databus.com</strong>  Please wait while we are taking you back.
+    <strong>Address added!</strong>  Please wait while we are taking you back.
   </div>
 </div>
 ";

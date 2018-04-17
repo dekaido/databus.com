@@ -2,8 +2,14 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta charset="UTF-8">
     <link rel="stylesheet" type="text/css" href="indexStyle.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <link rel="p">
     <title>Sign up at Databus.com</title>
 
@@ -11,76 +17,135 @@
 </head>
 <body>
 <div class="topnav">
-    <a class="active" href="index.html">Databus.com</a>
+    <a class="normal" href="index.php">Databus.com</a>
     <a class="right" href="login.html">Login</a>
-    <a class="right" href="Signup.html">Signup</a>
-    <input type="text" placeholder="Search space now...">
+    <a class="right" href="Signup.html" style="background-color: #2196F3; color: white;">Signup</a>
+
+    <form action='search.php' method='post'>
+        <input type="search" name='search' placeholder="Search space now...">
+    </form>
 </div>
+
+<div class="jumbotron" style="margin-bottom: 0px;background: linear-gradient(141deg, #0fb8ad 0%, #1fc8db 51%, #2cb5e8 75%); border: none;height: 770px">
+    <div class="container text-center" style=" background: transparent">
+    <h2 style="color: white">Join Us Now</h2>
+    </div>
+
 
 <div style="height: 50px;"></div>
 
+<div class="container-fluid" >
+    <div class="row">
+        <div class="col-lg-6" style="padding: 30px 30px;">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Regular Sign up <small>It's free!</small></h3>
+                </div>
+                <div class="panel-body">
+                    <form action="new_regular.php" role="form">
+                        <div class="row">
+                            <div class="col-xs-6 col-sm-6 col-md-6">
+                                <div class="form-group">
+                                    <input type="text" name="name" class="form-control input-sm" placeholder="First Name">
+                                </div>
+                            </div>
+                            <div class="col-xs-6 col-sm-6 col-md-6">
+                                <div class="form-group">
+                                    <input type="text" name="last" class="form-control input-sm" placeholder="Last Name">
+                                </div>
+                            </div>
+                        </div>
 
-<form action="new_user.php" method="post" style=" width: 49%;height: 500px; float: left; ">
-    <h1>Vendor Signup</h1>
-    First Name: <br>
-    <input type="text" name="name" placeholder="Your First Name">
-    <br>
-    Last Name: <br>
-    <input type="text" name="last" placeholder="Your Last Name">
-    <br>
-    Email: <br>
-    <input type="email" name="email" placeholder="Your Email">
-    <br>
-    Password:
-    <br>
-    <input type="password" name="password" placeholder="*****">
-    <br>
-    Phone Number: <br>
-    <input type="number" name="phone" placeholder="Your Phone Number">
-    <br>
+                        <div class="form-group">
+                            <input type="email" name="email" class="form-control input-sm" placeholder="Email Address">
+                        </div>
 
-    Your Company: <br>
-    <input type ="text" name="company" placeholder="Your Company Name">
+                        <div class="row">
+                            <div class="col-xs-6 col-sm-6 col-md-6">
+                                <div class="form-group">
+                                    <input type="password" name="password" class="form-control input-sm" placeholder="Password">
+                                </div>
+                            </div>
+                            <div class="col-xs-6 col-sm-6 col-md-6">
+                                <div class="form-group">
+                                    <input type="password" name="password_confirmation" id="password_confirmation" class="form-control input-sm" placeholder="Confirm Password">
+                                </div>
+                            </div>
+                        </div>
 
-    <br>
-    A vendor is someone who provides space.
-    <br>
-    <br>
-    <input type="submit" value="Sign up">
+                        <div class="form-group">
+                            <input type="number" name="phone" class="form-control input-sm" placeholder="Your Phone Number">
+                        </div>
 
-</form>
-<form action="new_regular.php" method="post" style="width: 49%;height: 500px; float: right;">
-    <h1>Regular Signup</h1>
-    First Name: <br>
-    <input type="text" name="name" placeholder="Your First Name">
-    <br>
-    Last Name: <br>
-    <input type="text" name="last" placeholder="Your Last Name">
-    <br>
-    Email: <br>
-    <input type="email" name="email" placeholder="Your Email">
-    <br>
-    Password:
-    <br>
-    <input type="password" name="password" placeholder="*****">
-    <br>
-    Phone Number: <br>
-    <input type="number" name="phone" placeholder="Your Phone Number">
-    <br>
+                        <input type="submit" value="Signup" class="btn btn-primary btn-block">
 
-    <br>
-    <br>
-    A regular is someone who would like to rent a space.
-    <br>
-    <input type="submit" value="Sign up">
+                    </form>
 
-</form>
+                </div>
+            </div>
+
+        </div>
+        <div class="col-lg-6" style="padding: 30px 30px;">
+
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Vendor Sign up <small>You can make money!</small></h3>
+                </div>
+                <div class="panel-body">
+                    <form action="new_user.php" role="form">
+                        <div class="row">
+                            <div class="col-xs-6 col-sm-6 col-md-6">
+                                <div class="form-group">
+                                    <input type="text" name="name" class="form-control input-sm" placeholder="First Name">
+                                </div>
+                            </div>
+                            <div class="col-xs-6 col-sm-6 col-md-6">
+                                <div class="form-group">
+                                    <input type="text" name="last" class="form-control input-sm" placeholder="Last Name">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <input type="email" name="email" class="form-control input-sm" placeholder="Email Address">
+                        </div>
+
+                        <div class="row">
+                            <div class="col-xs-6 col-sm-6 col-md-6">
+                                <div class="form-group">
+                                    <input type="password" name="password" class="form-control input-sm" placeholder="Password">
+                                </div>
+                            </div>
+                            <div class="col-xs-6 col-sm-6 col-md-6">
+                                <div class="form-group">
+                                    <input type="password" name="password_confirmation" class="form-control input-sm" placeholder="Confirm Password">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <input type="number" name="phone" class="form-control input-sm" placeholder="Your Phone Number">
+                        </div>
+
+                        <div class="form-group">
+                            <input type="text" name="company" class="form-control input-sm" placeholder="Your Company Name">
+                        </div>
+
+                        <input type="submit" value="Signup" class="btn btn-danger btn-block">
+
+                    </form>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
 
 
-<a href="login.html">Already has an account?</a>
+
+<a  href="login.html" class="btn btn-error" role="button" style="margin: auto; display: block; background-color: antiquewhite; width: 50%" >Already has an account?</a>
 <br>
-<a href="index.html">Databus</a>
-
-
+</div>
 </body>
 </html>
