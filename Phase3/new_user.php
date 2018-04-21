@@ -21,7 +21,7 @@ $max_result = mysqli_query($connect, $max);
 $max_id = mysqli_fetch_assoc($max_result);
 $max_id_increment = $max_id['MAXID'] + 1;
 
-$sql_insert_user = "INSERT INTO VENDOR(Vendor_id,first_name, last_name, email, password, phone_number, company) VALUES('$max_id_increment','$name', '$last', '$email', '$pass', '$phone', '$company');";
+$sql_insert_user = "INSERT INTO VENDOR(Vendor_id,first_name, last_name, email, password, phone_number, company, balance) VALUES('$max_id_increment','$name', '$last', '$email', '$pass', '$phone', '$company', 0);";
 $dis_result = mysqli_query($connect, $sql_insert_user);
 if(!$dis_result){
     die( "sql failed:" . mysqli_error($connect));

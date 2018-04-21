@@ -37,7 +37,7 @@
 /* Style the search box inside the navigation bar */
 .topnav input, .topnav form [type=search] {
     float: right;
-    padding: 6px;
+    padding: 6px 6px;
     border: none;
     margin-top: 8px;
     margin-right: 16px;
@@ -53,6 +53,7 @@
 
 
 
+
 /* When the screen is less than 600px wide, stack the links and the search field vertically instead of horizontally */
 @media screen and (max-width: 600px) {
     .topnav a, .topnav input[type=text] {
@@ -63,7 +64,5 @@
         margin: 0;
         padding: 14px;
     }
-    .topnav input[type=text] {
-        border: 1px solid #ccc;
-    }
+
 }

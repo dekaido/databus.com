@@ -37,13 +37,12 @@ echo "
 <body>
 <div class=\"topnav\">
     <a class=\"normal\" href=\"index.php\">Databus.com</a>
-    
-    <a class=\"right\" href=\"logout.php\">Logout</a>
-    <a class=\"right\" style=\"background-color: #2196F3; color: white;\" >$ti</a>
-    <form action='search.php' method='post'>
-    <input type=\"search\" name='search' placeholder=\"Search space now...\">
-    </form>
-</div>
+    <a class=\"right\" href='logout.php'>Logout </a>
+    <a class=\"right\" style=\"background-color: #2196F3; color: white;\" href=\"me.php\">$ti</a>
+    <form action = 'search.php' method = 'post' >
+    <input type = \"search\" name = 'search' placeholder = \"Search space now...\" >
+    </form >
+</div >
 
 
 </body>
@@ -150,7 +149,6 @@ function showAddr() {
         $zipcode = $row_addr["zip_code"];
         $state = $row_addr["state"];
 
-
         echo"<a class=\"list-group-item\">Street: $street</a>";
         echo"<a class=\"list-group-item\">Apt: $apt</a>";
         echo"<a class=\"list-group-item\">Zipcode: $zipcode</a>";
@@ -230,7 +228,9 @@ else{
   Room Number:
   <input type= \"number\" name=\"apt\"><br>
 <!-- Apartment Number: -->
-
+   City:
+  <input type= \"text\" name=\"city\"><br>
+<!-- State -->
   State:
   <input type= \"text\" name=\"state\"><br>
 <!-- State -->
@@ -241,9 +241,9 @@ else{
 
   Availability <br>
   From:
-  <input type= \"datetime-local\" name=\"from\"><br>
+  <input type= \"date\" name=\"from\"><br>
   Till:
-  <input type= \"datetime-local\" name=\"till\"><br>
+  <input type= \"date\" name=\"till\"><br>
 <!-- Availability -->
 
  This is a 
@@ -260,7 +260,7 @@ else{
 <!-- Categories -->
 </select>
     <br>
-  Price Per Hour:
+  Price Per DAY:
   <input type= \"number\" name=\"price\"><br>
 <!-- Price -->
 
@@ -268,8 +268,12 @@ else{
   Small Description:
   <input type= \"text\" name=\"description\"><br>
 
-  Amenities
+  Amenities/Feature:
   <input type= \"text\" name=\"amenities\"><br>
+  
+  Cover Photo(web address only):
+  <input type='text' name='img'><br>
+  
 <!-- Amenities -->
 
 <!--
@@ -286,7 +290,7 @@ else{
         
         <script>
 function showAddr() {
-    var x = document.getElementById(\"add\");
+    var x = document.getElementById(\"addr\");
     if (x.style.display === \"none\") {
         x.style.display = \"block\";
     } else {
@@ -316,7 +320,7 @@ function showAddr() {
             $s_state = $s_addr_row['state'];
             $s_zipcode = $s_addr_row['zip_code'];
             $s_company = $s_addr_row['company'];
-
+            $s_city = $s_addr_row['city'];
 
 
             if ($s_company == ""){
@@ -326,9 +330,9 @@ function showAddr() {
              <a class=\"list-group-item active\" style='background-color: #2ba0c6; border-color: #2ba0c6'>Your Space $x out of $count </a>
              
              <a class=\"list-group-item\">Space ID: 00000$space_i </a> 
-             <a class=\"list-group-item\">Space name: $sname  <button class= \" btn btn-danger\" role='button' style='margin-left: 0px;'>Pending</button></a>
+             <a class=\"list-group-item\">Space name: $sname  <button class= \" btn btn-danger\" role='button' style='margin-left: 20px;'>Pending</button></a>
             <a class=\"list-group-item\">Renting Time: $start_time  To  $end_time </a>
-            <a class=\"list-group-item\">Space Address: Room $s_room, $s_street, $s_state, $s_zipcode </a>
+            <a class=\"list-group-item\">Space Address: Room $s_room, $s_street, $s_city, $s_state, $s_zipcode </a>
              
              ";
             } else {
@@ -340,7 +344,7 @@ function showAddr() {
              <a class=\"list-group-item\">Space ID: 00000$space_i </a> 
              <a class=\"list-group-item\">Space name: $sname  <button class= \" btn btn-success\" role='button' style='margin-left: 20px;'>Verified by $s_company</button></a>
             <a class=\"list-group-item\">Renting Time: $start_time  To  $end_time </a>
-            <a class=\"list-group-item\">Space Address: Room $s_room, $s_street, $s_state, $s_zipcode </a>
+            <a class=\"list-group-item\">Space Address: Room $s_room, $s_street, $s_city, $s_state, $s_zipcode </a>
              
              ";
             }
@@ -363,7 +367,11 @@ function showAddr() {
   Room Number:
   <input type= \"number\" name=\"apt\"><br>
 <!-- Apartment Number: -->
-
+  
+  City:
+  <input type= \"text\" name=\"city\"><br>
+<!-- Apartment Number: -->
+  
   State:
   <input type= \"text\" name=\"state\"><br>
 <!-- State -->
@@ -374,9 +382,9 @@ function showAddr() {
 
   Availability <br>
   From:
-  <input type= \"datetime-local\" name=\"from\"><br>
+  <input type= \"date\" name=\"from\"><br>
   Till:
-  <input type= \"datetime-local\" name=\"till\"><br>
+  <input type= \"date\" name=\"till\"><br>
 <!-- Availability -->
 
  This is a 
@@ -393,7 +401,7 @@ function showAddr() {
 <!-- Categories -->
 </select>
     <br>
-  Price Per Hour:
+  Price Per DAY:
   <input type= \"number\" name=\"price\"><br>
 <!-- Price -->
 
@@ -401,10 +409,11 @@ function showAddr() {
   Small Description:
   <input type= \"text\" name=\"description\"><br>
 
-  Amenities
+  Amenities/Feature
   <input type= \"text\" name=\"amenities\"><br>
 <!-- Amenities -->
-
+Cover Photo(web address only):
+  <input type='text' name='img'><br>
 <!--
   Pictures
   <input type=\"file\" name=\"pic\" accept=\"image/*\"> <br>
@@ -438,7 +447,8 @@ function showAddr() {
 
                 echo "</div>
 
-                            </div>";
+                            </div>
+                            ";
             }
 
         }
@@ -447,5 +457,66 @@ function showAddr() {
 
 
 }
+
+echo"
+</div>
+</div>
+<link href=\"//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css\" rel=\"stylesheet\">
+
+<footer class=\"footer text-center\" style='margin-top: 20px;padding-top: 5rem;
+    padding-bottom: 5rem;
+    background-color: #2c3e50;
+    color: #fff;display: block;'>
+      <div class=\"container\">
+        <div class=\"row\">
+          <div class=\"col-md-4 mb-5 mb-lg-0\">
+            <h4 class=\"text-uppercase mb-4\">Location</h4>
+            <p class=\"lead mb-0\">W204 Westgate Building
+              <br>State College, PA, 16803</p>
+          </div>
+          <div class=\"col-md-4 mb-5 mb-lg-0\">
+            <h4 class=\"text-uppercase mb-4\">Around the Databus.com</h4>
+            <ul class=\"list-inline mb-0\" >
+              <li class=\"list-inline-item\">
+                <a class=\"btn btn-outline-light btn-social text-center rounded-circle\" href=\"#\">
+                  <i class=\"fa fa-fw fa-facebook\" style='color: white;'></i>
+                </a>
+              </li>
+              <li class=\"list-inline-item\">
+                <a class=\"btn btn-outline-light btn-social text-center rounded-circle\" href=\"#\">
+                  <i class=\"fa fa-fw fa-google-plus\"style='color: white;'></i>
+                </a>
+              </li>
+              <li class=\"list-inline-item\">
+                <a class=\"btn btn-outline-light btn-social text-center rounded-circle\" href=\"#\">
+                  <i class=\"fa fa-fw fa-twitter\"style='color: white;'></i>
+                </a>
+              </li>
+              <li class=\"list-inline-item\">
+                <a class=\"btn btn-outline-light btn-social text-center rounded-circle\" href=\"#\">
+                  <i class=\"fa fa-fw fa-linkedin\"style='color: white;'></i>
+                </a>
+              </li>
+              <li class=\"list-inline-item\">
+                <a class=\"btn btn-outline-light btn-social text-center rounded-circle\" href=\"#\">
+                  <i class=\"fa fa-fw fa-dribbble\"style='color: white;'></i>
+                </a>
+              </li>
+            </ul>
+          </div>
+          <div class=\"col-md-4\">
+            <h4 class=\"text-uppercase mb-4\">About Databus.com</h4>
+            <p class=\"lead mb-0\">Databus.com is a student non-profit space finding Website. <br>
+              <a href=\"mailto:help@databus.com\" style='color: white'>Contact Us</a>.</p>
+          </div>
+        </div>
+      </div>
+    </footer>
+<div class=\"copyright py-4 text-center text-white\" style='background-color: black;'>
+      <div class=\"container\" style='padding: 30px; color: white;'>
+        <small>Copyright © Databus.com 2018</small>
+      </div>
+    </div>
+";
 
 

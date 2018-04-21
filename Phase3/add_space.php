@@ -24,6 +24,8 @@ $PricePerHour = mysqli_real_escape_string($conn, $_REQUEST['price']);
 $description = mysqli_real_escape_string($conn, $_REQUEST['description']);
 $amen = mysqli_real_escape_string($conn, $_REQUEST['amenities']);
 $size = mysqli_real_escape_string($conn, $_REQUEST['size']);
+$city = mysqli_real_escape_string($conn, $_REQUEST['city']);
+$imgsrc = mysqli_real_escape_string($conn, $_REQUEST['img']);
 if (!$conn) {
     die("Connection Failed: " .mysqli_connect_error());
 }
@@ -43,8 +45,8 @@ $ven_id = $row["vendor_id"];
 
 
 //SQL Statements
-$sql = "INSERT INTO Space (term_id , space_id, vendor_id, space_name,resv_start_date,resv_end_date,price,service) VALUES('$max_id_increment','$max_id_increment','$ven_id','$space_name','$availability_from','$availability_till','$PricePerHour','$amen');";
-$sql1 = "INSERT INTO Space_addr (space_addr_id, street,room,state,zip_code) VALUES('$max_id_increment','$street','$apt','$state','$zipcode');";
+$sql = "INSERT INTO Space (img, descr ,term_id , space_id, vendor_id, space_name,resv_start_date,resv_end_date,price,service) VALUES('$imgsrc','$description','$max_id_increment','$max_id_increment','$ven_id','$space_name','$availability_from','$availability_till','$PricePerHour','$amen');";
+$sql1 = "INSERT INTO Space_addr (city, space_addr_id, street,room,state,zip_code) VALUES('$city','$max_id_increment','$street','$apt','$state','$zipcode');";
 $sql2 = "INSERT INTO SUB_CATEGORY(sub_category_id, Category_id, size) VALUES('$max_id_increment', '$categories', $size);";
 
 
