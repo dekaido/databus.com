@@ -72,8 +72,55 @@ else {
     <h1 style=\"color: beige;\">Databus</h1>      
     <p style=\"color: aliceblue;\">A place where you can reserve professional space</p>
   </div>
-</div>
+</div >
 <img src=\"indexpic.jpg\" style=\"max-width: 100%; height: auto; \">
+
+<div class=\"jumbotron text-center\" style=\"background-color: #032B3A;color: white; margin-bottom: 0px;\">
+    <h1>Trending</h1>      
+    <p>Look what's popular</p>
+  <div class=\"container\" >
+  <div class=\"row\">
+  <div class=\"col-md-4\">
+      <div class=\"thumbnail\" style='border-radius: 10px;' >
+      <a href='search.php?StateCollege'>
+          <div class=\"caption text-center\" >
+          <img  class='img-responsive' src= \"state_college.jpg\"  style = \"width:100%\" >
+            <h3  class='carousel-caption'> State College</h3 >
+          </div>
+       </a>  
+      
+      </div >
+   
+    </div >
+    
+    <div class=\"col-md-4\">
+      <div class=\"thumbnail\" style='border-radius: 10px;'>
+      <a href='search.php?Altoona'>
+          <div class=\"caption text-center\" >
+          <img  class='img-responsive' src= \"altoona.jpg\"  style ='width:100%; height: 220px;' >
+            <h3  class='carousel-caption'> Altoona</h3 >
+          </div>
+       </a>
+      </div >
+   
+    </div >
+    
+    <div class=\"col-md-4\">
+      <div class=\"thumbnail\" style='border-radius: 10px;'>
+      <a href='search.php?Philadelphia'>
+          <div class=\"caption text-center\" >
+          <img  class='img-responsive' src= \"philly.jpg\"  style = \"width:100%\" >
+            <h3  class='carousel-caption'> Philadelphia</h3 >
+          </div>
+       </a>
+      </div >
+   
+    </div >
+    </div>
+    </div>
+    </div>
+
+
 <div class=\"jumbotron\" style='margin-bottom: 0px;'>
 
   <div class=\"container text-center\" style=\"background: transparent;\">
@@ -109,10 +156,11 @@ for ($x = 1; $x <= 6; $x++) {
   
     <div class=\"col-md-4\">
       <div class=\"thumbnail\">
-        <a href=\"#$spaceid\" >
+        <a href=\"spacepage.php?$spaceid\" >
           <img src=\"$imgsrc\" alt=\"$currentname at $current_city\" style=\"width:100%\">
           <div class=\"caption\">
             <h3>Best Deal: $$price / Day</h3>
+            <h4>$currentname at $current_city </h4>
             <p>$descript</p>
           </div>
         </a>
@@ -129,7 +177,7 @@ for ($x = 1; $x <= 6; $x++) {
  
 </div>
 </div>
-
+    
 
 
 </body>

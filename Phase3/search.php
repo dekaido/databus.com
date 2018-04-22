@@ -1,11 +1,18 @@
 <?php
 session_start();
-$search = $_POST["search"];
+if(isset($_POST["search"])) {
+    $user_input = $_POST["search"];
+} else{
+    $user_input = $_SERVER['QUERY_STRING'];
+}
+
 $server = "localhost";
 $username = "root";
 $password = "";
 $database = "database_phase3";
 $connect = mysqli_connect($server, $username, $password, $database);
+
+
 
 if(mysqli_connect_error())
 {
@@ -14,7 +21,6 @@ if(mysqli_connect_error())
 $sql_get_search_result = "SELECT * FROM space;";
 $search_result = mysqli_query($connect, $sql_get_search_result);
 $result_count = 0;
-$user_input = mysqli_escape_string($connect, $_REQUEST['search']);
 $isresult = 0;
 $space_count = mysqli_num_rows($search_result);
 echo "
@@ -117,18 +123,18 @@ for ($x = 1; $x <= $space_count; $x++) {
         echo "
    <article class=\"search-result row\" style='padding: 20px 10px; margin: 50px 50px; ; border-color: transparent ;background: white ; border-radius: 10px'>
 			<div class=\"col-xs-12 col-sm-12 col-md-3\">
-				<a href=\"#$spaceid\" title=\"$currentname\" class=\"thumbnail\"><img src=\"$imgsrc\" alt=\"$currentname\" /></a>
+				<a href=\"spacepage.php?$spaceid\" title=\"$currentname\" class=\"thumbnail\"><img src=\"$imgsrc\" alt=\"$currentname\" /></a>
 			</div>
 			<div class=\"col-xs-12 col-sm-12 col-md-2\">
-				<ul class=\"meta-search\" style='padding-top: 30px;'>
-					<li><i class=\"glyphicon glyphicon-calendar\"></i> <span>From: $starttiem</span></li>
-					<li><i class=\"glyphicon glyphicon-calendar\"></i> <span>To: $endtime</span></li>
-					<li><i class=\"glyphicon glyphicon-time\"></i> <span> $currentser</span></li>
-					<li><i class=\"glyphicon glyphicon-tags\"></i> <span> $current_company</span></li>
+				<ul class=\"meta-search\" style='padding-top: 30px; font-weight: 200;'>
+					<li><i class=\"glyphicon glyphicon-calendar\"></i> <span>From: $starttiem</span></li><br>
+					<li><i class=\"glyphicon glyphicon-calendar\"></i> <span>To: $endtime</span></li><br>
+					<li><i class=\"glyphicon glyphicon-globe\"></i> <span> $currentser</span></li><br>
+					<li><i class=\"glyphicon glyphicon-book\"></i> <span> $current_company</span></li>
 				</ul>
 			</div>
 			<div class=\"col-xs-12 col-sm-12 col-md-7 excerpet\">
-				<h3><a href=\"#$spaceid\" title=\"\">$currentname at $current_city</a></h3>
+				<h3><a href=\"spacepage.php?$spaceid\" title=\"\">$currentname at $current_city</a></h3>
 				<p>This space is located in $current_street, $current_city, $current_state. $descript</p>
 				<h3 class='col-sm-4' style='padding: 0px;  ;' > $ $price / Day </h3>
 				
